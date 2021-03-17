@@ -4,10 +4,10 @@ import moment from "moment";
 import "./PostsFeed.css";
 import { fetchNext5Posts } from "../store/feed/actions";
 import { selectFeedLoading, selectFeedPosts } from "../store/feed/selectors";
+import { Link } from "react-router-dom";
 
 export default function PostsFeed() {
   const dispatch = useDispatch();
-
   const loading = useSelector(selectFeedLoading);
   const posts = useSelector(selectFeedPosts);
 
@@ -21,7 +21,9 @@ export default function PostsFeed() {
       {posts.map((post) => {
         return (
           <div key={post.id}>
-            <h3>{post.title}</h3>
+            <h3>
+              <Link to={`/post/${post.id}`}>{post.title}</Link>
+            </h3>
             <p className="meta">
               {moment(post.createdAt).format("DD-MM-YYYY")} &bull;{" "}
               <span className="tags">

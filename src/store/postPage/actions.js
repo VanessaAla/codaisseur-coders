@@ -3,11 +3,16 @@ import axios from "axios";
 const API_URL = `https://codaisseur-coders-network.herokuapp.com`;
 
 export function startLoadingPost() {
-  // TODO
+  return {
+    type: "postPage/startLoadingPost",
+  };
 }
 
-export function postFullyFetched(/* TODO */) {
-  // TODO
+export function postFullyFetched(data) {
+  return {
+    type: "postPage/postFullyFetched",
+    payload: data,
+  };
 }
 
 export function fetchPost(id) {

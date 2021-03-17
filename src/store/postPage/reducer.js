@@ -14,6 +14,14 @@ export default function postPageSliceReducer(state = initialState, action) {
       };
     }
 
+    case "postPage/postFullyFetched": {
+      return {
+        loading: false,
+        post: action.payload.post,
+        comments: action.payload.comments,
+      };
+    }
+
     default: {
       return state;
     }

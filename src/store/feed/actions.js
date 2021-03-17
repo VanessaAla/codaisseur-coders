@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API_URL } from "../../config"; //i am importing the api from src/config.js. It is more tidy this way!
 
-const API_URL = `https://codaisseur-coders-network.herokuapp.com`;
+//const API_URL = `https://codaisseur-coders-network.herokuapp.com`;
 
 export function startLoading() {
   return {

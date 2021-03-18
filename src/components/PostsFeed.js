@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
-import "./PostsFeed.css";
+import { Link } from "react-router-dom";
 import { fetchNext5Posts } from "../store/feed/actions";
 import { selectFeedLoading, selectFeedPosts } from "../store/feed/selectors";
-import { Link } from "react-router-dom";
+import moment from "moment";
+import "./PostsFeed.css";
 
 export default function PostsFeed() {
   const dispatch = useDispatch();

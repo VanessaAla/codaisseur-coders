@@ -5,19 +5,21 @@ import { useHistory } from "react-router-dom";
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
-    name: "",
   });
   const dispatch = useDispatch();
   const history = useHistory();
 
   const onFieldChange = (e) => {
+    console.log("field changed", e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted with values", formData);
     const { name, email, password } = formData;
     dispatch(signUp(name, email, password, history));
   };
@@ -26,7 +28,7 @@ export default function SignUpPage() {
     <div>
       <form onSubmit={onFormSubmit}>
         <div>
-          <label style={{ marginRight: 15 }}>Name</label>
+          <label style={{ marginRight: 20 }}>Name</label>
           <input
             type="text"
             value={formData.name}
@@ -35,7 +37,7 @@ export default function SignUpPage() {
           />
         </div>
         <div>
-          <label style={{ marginRight: 15 }}>Email</label>
+          <label style={{ marginRight: 20 }}>Email</label>
           <input
             type="text"
             value={formData.email}
@@ -44,7 +46,7 @@ export default function SignUpPage() {
           />
         </div>
         <div>
-          <label style={{ marginRight: 15 }}>Password</label>
+          <label style={{ marginRight: 20 }}>Password</label>
           <input
             type="text"
             value={formData.password}

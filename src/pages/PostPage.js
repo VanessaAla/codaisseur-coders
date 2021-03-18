@@ -38,7 +38,6 @@ export default function PostPage() {
             </span>
           </p>
           <ReactMarkdown source={postData.post.content} />
-
           <h2>Comments</h2>
           {postData.comments.rows.length === 0 ? (
             <p>

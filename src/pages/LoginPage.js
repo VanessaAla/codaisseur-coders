@@ -1,43 +1,43 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { login } from "../store/user/actions";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    // TODO
-    console.log("TODO login with:", email, password);
-  }
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log("login", email, password);
+    dispatch(login(email, password));
+  };
 
   return (
     <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <p>
-          <label>
-            Email:{" "}
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </p>
-        <p>
-          <label>
-            Password:{" "}
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </p>
-        <p>
-          <button type="submit">Login</button>
-        </p>
+      <h2>Login</h2>
+      <form onSubmit={onFormSubmit}>
+        <div>
+          <label style={{ marginRight: 15 }}>Email</label>
+          <input
+            type="text"
+            value={email}
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div>
+          <label style={{ marginRight: 15 }}>Password</label>
+          <input
+            type="text"
+            value={password}
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

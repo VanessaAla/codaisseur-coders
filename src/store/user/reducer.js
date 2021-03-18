@@ -14,7 +14,7 @@ export default function userReducer(state = initialState, action) {
       return { ...state, token: jwt, loading: false };
     }
     case "user/loginSuccess": {
-      // payload => obj with all the user data
+      // payload => object with all the user data
       const { userData, token } = action.payload;
       return { ...state, userData: userData, token: token, loading: false };
     }

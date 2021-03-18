@@ -53,7 +53,7 @@ export const login = (email, password) => async (dispatch, getState) => {
 
     const userData = userProfileResponse.data;
 
-    dispatch(setToken(token));
+    //dispatch(setToken(token));
     dispatch(loginSuccess(userData, token));
   } catch (e) {
     console.log(e.message);

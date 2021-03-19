@@ -16,6 +16,13 @@ export function postsFetched(morePosts) {
   };
 }
 
+function oneMorePost(post) {
+  return {
+    type: "feed/addOne",
+    payload: post,
+  };
+}
+
 export async function fetchNext5Posts(dispatch, getState) {
   //(dispatch and getState) are my new parameters
   dispatch(startLoading());
@@ -46,3 +53,28 @@ export async function fetchNext5Posts(dispatch, getState) {
   } catch (e) {
     console.log(e.message);
   }*/
+
+export const createPost = (title, content) => async (dispatch, getState) => {
+  //create new post
+  try {
+    const state = getState();
+    const token = state.user.token;
+
+    if (!token) return;
+
+    const response = await axios.post(
+      `${API_URL}/posts`,
+      { title, content },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log(response.data);
+    dispatch(oneMorePost(response.data));
+  } catch (e) {
+    console.log(e.message);
+  }
+};

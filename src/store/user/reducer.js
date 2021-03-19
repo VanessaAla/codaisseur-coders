@@ -1,7 +1,7 @@
 const initialState = {
   token: null,
   loading: false,
-  userData: null,
+  profile: null,
 };
 
 export default function userReducer(state = initialState, action) {
@@ -15,9 +15,13 @@ export default function userReducer(state = initialState, action) {
     }
     case "user/loginSuccess": {
       // payload => object with all the user data
-      const { userData, token } = action.payload;
-      return { ...state, userData: userData, token: token, loading: false };
+      const { profile, token } = action.payload;
+      return { ...state, profile: profile, token: token, loading: false };
     }
+    case "user/logout": {
+      return initialState;
+    }
+
     default: {
       return state;
     }

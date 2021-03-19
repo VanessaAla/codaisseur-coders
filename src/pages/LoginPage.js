@@ -12,7 +12,7 @@ export default function LoginPage() {
   const onFormSubmit = (e) => {
     e.preventDefault();
     console.log("login", email, password);
-    dispatch(login(email, password));
+    dispatch(login(email, password, history));
   };
 
   return (
